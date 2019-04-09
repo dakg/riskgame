@@ -27,8 +27,6 @@ public class AttackPhaseView {
      */
     int attackerRolls = 0, defenderRolls = 0;
 
-    Scanner sc = new Scanner(System.in);
-
     /**
      * Start View of the Attack Phase
      *
@@ -92,7 +90,8 @@ public class AttackPhaseView {
         while (sourceCountryValid == true) {
             System.out.println("Enter Source country : ");
 //            sourceCountry = sc.next().toUpperCase().trim();
-            sourceCountry = new StrategyContext(attackController.getPlayerStrategy()).getAttackingCountry(attackController.getGameBoard(), attackController.getPlayer());
+//            sourceCountry = new StrategyContext(attackController.getPlayerStrategy()).getAttackingCountry(attackController.getGameBoard(), attackController.getPlayer());
+            sourceCountry = RandomGenerator.getMyCountry(attackController.getPlayer());
             System.out.println(sourceCountry);
             if (attackController.isValidSourceCountry(sourceCountry)) {
                 String s = "Player chooses " + sourceCountry + " source country !";
@@ -271,11 +270,11 @@ public class AttackPhaseView {
             System.out.println("Enter the number of armies you want to move from " + sourceCountry + " to " + targetCountry + " : ");
 //            army = sc.nextInt();
             int upperBound = attackController.getPlayer().getCountryArmyInfo().get(sourceCountry) - 1;
-//            army = RandomGenerator.randomNumberGenerator(1, upperBound);
 //            System.out.println("NUMBER OF ARMY IN " + sourceCountry + " : ");
             showArmy(sourceCountry);
             System.out.println("ATTACKER ROLLS : " + attackerRolls);
             System.out.println("UPPER BOUND : " + upperBound);
+//            army = RandomGenerator.randomNumberGenerator(1, upperBound);
             army = new StrategyContext(attackController.getPlayerStrategy()).getArmyToMove(attackerRolls, upperBound);
             System.out.println(army);
             String s = "Number of armies selected by the player :  " + army;
@@ -292,7 +291,6 @@ public class AttackPhaseView {
             } else {
                 System.out.println("Invalid number of Army selected ");
             }
-
         }
         attackController.updateArmyInfoAttacker(army, sourceCountry, targetCountry);
         if (attackController.checkWinnerOfWholeMap()) {

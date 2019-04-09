@@ -28,12 +28,12 @@ public class AttackPhaseController {
     /**
      * The GameBoard on which the game is being played
      */
-    public static GameBoard gameBoard;
+    public GameBoard gameBoard;
 
     /**
      * The current player whose attack phase is running
      */
-    public static Player player;
+    public  Player player;
 
     /**
      * Used for keeping the track of the attacker conquering atleast one

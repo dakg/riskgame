@@ -5,6 +5,7 @@
  */
 package Strategies;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -24,7 +25,7 @@ import services.RandomGenerator;
  *
  * @author daksh
  */
-public class Aggresive implements Strategy {
+public class Aggresive implements Strategy,Serializable {
 
     public Aggresive() {
 
@@ -120,7 +121,6 @@ public class Aggresive implements Strategy {
      *
      */
     @Override
-
     public String getAttackingCountry(GameBoard gameBoard, Player player) {
         HashMap<String, Integer> countryArmyInfo = player.getCountryArmyInfo();
         HashMap<String, Integer> countryArmyInfoCopy = new HashMap();
@@ -138,9 +138,9 @@ public class Aggresive implements Strategy {
                 }
                 countryArmyInfoCopy.remove(sourceCountry);
                 System.out.println(" Neighbour is also owned by the player");
-            } else {
-                countryArmyInfoCopy.remove(sourceCountry);
             }
+            countryArmyInfoCopy.remove(sourceCountry);
+
         }
         return sourceCountry;
     }

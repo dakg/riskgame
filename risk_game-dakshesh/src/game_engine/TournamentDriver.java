@@ -60,7 +60,7 @@ public class TournamentDriver {
         this.gameDriver = gameDriver;
     }
 
-    public void startTournament() {
+    public void startTournament() throws InterruptedException {
         GameExecutor gameExecutor[][] = new GameExecutor[maps.length][numberOfGames];
         for (int i = 0; i < maps.length; i++) {
             for (int j = 0; j < numberOfGames; j++) {
@@ -68,10 +68,6 @@ public class TournamentDriver {
             }
         }
 
-//        gameDriver[0][0].startGame();
-//        gameDriver[0][1].startGame();
-//        gameDriver[1][0].startGame();
-//        gameDriver[1][1].startGame();
 //        for (int i = 0; i < maps.length; i++) {
 //            for (int j = 0; j < numberOfGames; j++) {
 ////                    gameExecutor[i][j].run();
@@ -84,13 +80,23 @@ public class TournamentDriver {
                 for (int j = 0; j < numberOfGames; j++) {
 //                    gameExecutor[i][j].run();
                     gameDriver[i][j].startGame();
-                    System.out.println("gagagagagagagaagagagagagagagagagagagagagagagagagagaggaga " + " i " + i + " j " + j + "object : " + gameDriver[i][j]);
                 }
             }
         };
 
         Thread t = new Thread(r);
         t.start();
+
+        Thread.sleep(2000);
+
+       
+        for (int i = 0; i < maps.length; i++) {
+            System.out.print("Map " + i + " : ");
+            for (int j = 0; j < numberOfGames; j++) {
+                System.out.print(gameDriver[i][j].getGameResult() + "    ");
+            }
+            System.out.println("");
+        }
     }
 
     private GameMap[] getMaps(int numberOfMaps, String[] mapPaths) {
@@ -137,25 +143,24 @@ public class TournamentDriver {
 
     }
 
-    public static void main(String[] args) {
-
-        int numberOfGames = 2;
-        int numberOfMaps = 1;
-        int drawTurn = 30;
-        String mapPaths[] = new String[2];
-        mapPaths[0] = "C:\\Users\\daksh\\Desktop\\maps\\Diplomacy.map";
-        mapPaths[1] = "C:\\Users\\daksh\\Desktop\\maps\\Belgie.map";
-
-        Strategy s[] = new Strategy[4];
-        s[0] = new Aggresive();
-        s[1] = new Benevolent();
-        s[2] = new Cheating();
-        s[3] = new Random();
-
-        int strategy[] = {1, 1, 1, 1};
-
-        TournamentDriver td = new TournamentDriver(numberOfGames, drawTurn, mapPaths.length, mapPaths, strategy);
-        td.startTournament();
-    }
-
+//    public static void main(String[] args) {
+//
+//        int numberOfGames = 2;
+//        int numberOfMaps = 1;
+//        int drawTurn = 30;
+//        String mapPaths[] = new String[2];
+//        mapPaths[0] = "C:\\Users\\daksh\\Desktop\\maps\\Diplomacy.map";
+//        mapPaths[1] = "C:\\Users\\daksh\\Desktop\\maps\\Belgie.map";
+//
+//        Strategy s[] = new Strategy[4];
+//        s[0] = new Aggresive();
+//        s[1] = new Benevolent();
+//        s[2] = new Cheating();
+//        s[3] = new Random();
+//
+//        int strategy[] = {1, 1, 1, 1};
+//
+//        TournamentDriver td = new TournamentDriver(numberOfGames, drawTurn, mapPaths.length, mapPaths, strategy);
+//        td.startTournament();
+//    }
 }

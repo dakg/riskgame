@@ -265,7 +265,7 @@ public class GameDriver {
                 }
                 currentTurn++;
 
-                if (gameMode == 10 && flag) {
+                if (gameMode == 1 && flag) {
                     //Save logic comes here
                     System.out.println("Do you want to Save Game : y/n ");
                     Scanner sc = new Scanner(System.in);
@@ -335,5 +335,14 @@ public class GameDriver {
     public void setGameMode(int gameMode) {
         this.gameMode = gameMode;
     }
+
+    public String getGameResult() {
+        return gameResult;
+    }
+
+    public void setGameResult(String gameResult) {
+        this.gameResult = gameResult;
+    }
+    
 
 }

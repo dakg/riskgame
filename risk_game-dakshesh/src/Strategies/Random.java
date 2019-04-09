@@ -5,6 +5,7 @@
  */
 package Strategies;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import models.GameBoard;
 import models.Player;
@@ -15,7 +16,7 @@ import static services.RandomGenerator.randomNumberGenerator;
  *
  * @author daksh
  */
-public class Random implements Strategy {
+public class Random implements Strategy,Serializable {
 
     public Random() {
 

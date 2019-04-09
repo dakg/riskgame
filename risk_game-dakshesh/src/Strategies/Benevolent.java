@@ -5,6 +5,7 @@
  */
 package Strategies;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -24,7 +25,7 @@ import static services.RandomGenerator.randomNumberGenerator;
  *
  * @author daksh
  */
-public class Benevolent implements Strategy {
+public class Benevolent implements Strategy,Serializable {
 
     public Benevolent() {
 

@@ -8,6 +8,7 @@ package models;
 import Strategies.Strategy;
 import Strategies.StrategyContext;
 import controllers.AttackPhaseController;
+import controllers.AttackPhaseController;
 import controllers.FortificationPhaseController;
 import controllers.ReinforcementPhaseController;
 import controllers.services.PhaseUpdateService;
@@ -384,13 +385,14 @@ public class Player extends Observable implements Serializable {
      * @param gameBoard Object of the GameBoard {@link models.GameBoard}
      */
     public void reinforcement(GameBoard gameBoard) {
+        new StrategyContext(this.strategy).initReinforce(gameBoard, this);
+
         ReinforcementPhaseController rpc = new ReinforcementPhaseController();
 
         PhaseUpdateService.setCurrentPhase(gameBoard, Constants.REINFORCEMENT_PHASE);
         PhaseUpdateService.setPlayerName(gameBoard, getPlayerName());
         PhaseUpdateService.clearActions(gameBoard);
         gameBoard.stateChanged();
-        new StrategyContext(this.strategy).initReinforce(gameBoard, this);
         // CardExchangeViewGUI cardExchangeView = new CardExchangeViewGUI();
         // this.addObserver(cardExchangeView);
         //   cardExchangeView.showView();
@@ -403,15 +405,22 @@ public class Player extends Observable implements Serializable {
      * @param gameboard Object of the GameBoard {@link models.GameBoard}
      */
     public void attack(GameBoard gameboard) {
-        AttackPhaseController apc = new AttackPhaseController();
+        new StrategyContext(this.strategy).initAttack(gameBoard, this);
 
+        AttackPhaseController apc = new AttackPhaseController();
         PhaseUpdateService.setCurrentPhase(gameBoard, Constants.ATTACK_PHASE);
         PhaseUpdateService.setPlayerName(gameBoard, playerName);
         PhaseUpdateService.clearActions(gameBoard);
         gameBoard.stateChanged();
-        new StrategyContext(this.strategy).initAttack(gameBoard, this);
         apc.attackController(gameboard, this);
 
+//        AttackPhaseController apc = new AttackPhaseController();
+//        PhaseUpdateService.setCurrentPhase(gameBoard, Constants.ATTACK_PHASE);
+//        PhaseUpdateService.setPlayerName(gameBoard, playerName);
+//        PhaseUpdateService.clearActions(gameBoard);
+//        gameBoard.stateChanged();
+//        new StrategyContext(this.strategy).initAttack(gameBoard, this);
+//        apc.startAttack(gameBoard, this);
     }
 
     /**
@@ -420,13 +429,14 @@ public class Player extends Observable implements Serializable {
      * @param gameBoard Object of the GameBoard {@link models.GameBoard}
      */
     public void fortification(GameBoard gameBoard) {
+        new StrategyContext(this.strategy).initFortify(gameBoard, this);
+
         FortificationPhaseController fpc = new FortificationPhaseController();
 
         PhaseUpdateService.setCurrentPhase(gameBoard, Constants.FORTIFICATION_PHASE);
         PhaseUpdateService.setPlayerName(gameBoard, getPlayerName());
         PhaseUpdateService.clearActions(gameBoard);
         gameBoard.stateChanged();
-        new StrategyContext(this.strategy).initFortify(gameBoard, this);
         fpc.startFortification(gameBoard, this);
     }
 

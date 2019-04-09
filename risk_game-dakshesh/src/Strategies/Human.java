@@ -5,6 +5,8 @@
  */
 package Strategies;
 
+import java.io.Serializable;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import models.GameBoard;
 import models.Player;
@@ -15,7 +17,7 @@ import static services.RandomGenerator.randomNumberGenerator;
  *
  * @author daksh
  */
-public class Human implements Strategy {
+public class Human implements Strategy,Serializable {
 
     public Human() {
     }
@@ -185,7 +187,16 @@ public class Human implements Strategy {
     @Override
     public int getFortifyChoice() {
         Scanner sc = new Scanner(System.in);
-        int fortifyChoice = sc.nextInt();
+        int fortifyChoice;
+        while (true) {
+            try {
+                fortifyChoice = sc.nextInt();
+                break;
+            } catch (InputMismatchException e) {
+                continue;
+            }
+
+        }
         return fortifyChoice;
     }
 

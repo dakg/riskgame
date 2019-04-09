@@ -5,6 +5,8 @@
  */
 package main;
 
+import java.util.Scanner;
+
 /**
  *
  * @author daksh
@@ -13,8 +15,25 @@ public class TestClass {
 
     public static void main(String[] args) {
         String s[][] = new String[3][];
-        s[0] = new String[1];
-        
-        s[0][1] = "world";
+        Scanner sc = new Scanner(System.in);
+
+        boolean loop = true;
+        while (loop) {
+            int choice = sc.nextInt();
+            switch (choice) {
+                case 1: {
+                    System.out.println("1");
+                    break;
+                }
+                case 2: {
+                    System.out.println("2");
+                    loop = false;
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
+        }
     }
 }

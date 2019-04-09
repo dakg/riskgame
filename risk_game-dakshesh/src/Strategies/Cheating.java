@@ -7,6 +7,7 @@ package Strategies;
 
 import controllers.services.AttackPhaseUpdateService;
 import controllers.services.ReinforcementPhaseUpdateService;
+import java.io.Serializable;
 import java.util.ArrayList;
 import models.GameBoard;
 import models.Player;
@@ -17,7 +18,7 @@ import static services.RandomGenerator.randomNumberGenerator;
  *
  * @author daksh
  */
-public class Cheating implements Strategy {
+public class Cheating implements Strategy ,Serializable{
 
     public Cheating() {
 

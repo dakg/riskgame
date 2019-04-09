@@ -110,11 +110,12 @@ public class StartupPhaseController {
         initializeMembers(gameBoard, player, gameDriver);
         assignedCountries = assignCountries(gameBoard, player);
         PhaseUpdateService.setCurrentPhase(gameBoard, Constants.STARTUP_PHASE);
-        if (gameDriver.getGameMode() == 2) {
+        if (gameDriver.getGameMode() == 1) {
+            startupPhaseView.showView(currentPlayer);
+        } else if (gameDriver.getGameMode() == 2) {
             autoAsign();
         } else {
             autoAsign();
-//            startupPhaseView.showView(currentPlayer);
         }
         return 0;
     }

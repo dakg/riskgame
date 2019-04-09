@@ -5,6 +5,7 @@
  */
 package Strategies;
 
+import java.io.Serializable;
 import models.GameBoard;
 import models.Player;
 
@@ -12,7 +13,7 @@ import models.Player;
  *
  * @author daksh
  */
-public class StrategyContext {
+public class StrategyContext implements Serializable {
 
     Strategy strategy;
 

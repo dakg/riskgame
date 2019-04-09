@@ -372,7 +372,11 @@ public class Tournament_Window extends javax.swing.JFrame {
             }
 
             TournamentDriver td = new TournamentDriver(numberOfGames, drawTurn, numberOfMaps, mapPaths, strategy);
-            td.startTournament();
+            try {
+                td.startTournament();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Tournament_Window.class.getName()).log(Level.SEVERE, null, ex);
+            }
             this.dispose();
         }
     }//GEN-LAST:event_startTournamentButtonActionPerformed

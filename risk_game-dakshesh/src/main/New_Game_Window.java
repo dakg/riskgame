@@ -303,7 +303,8 @@ public class New_Game_Window extends javax.swing.JFrame {
             this.dispose();
             int nop = (Integer) noOfPlayers.getValue();
             Strategy s[] = getStrategies(nop);
-            int gameMode = 1;
+            int gameMode = canSave(nop) ? 1 : 3;    // 1 means there are human players so game can be saved , 3 means no human player so cant save
+
             GameDriver gd = new GameDriver(map, nop, s, gameMode, -1);
             gd.startGame();
 //            GameDriver gd1 = new GameDriver(map, nop);
@@ -324,7 +325,6 @@ public class New_Game_Window extends javax.swing.JFrame {
                 me.loadMapFile(mapPath);
             } catch (InvalidMapException ex) {
                 System.out.println("Invalid Map File: Exception");
-                Logger.getLogger(New_Game_Window.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_map_editActionPerformed
@@ -534,5 +534,15 @@ public class New_Game_Window extends javax.swing.JFrame {
             }
         }
         return s;
+    }
+
+    private boolean canSave(int nop) {
+        for (int i = 0; i < nop; i++) {
+            String temp = (String) jcb[i].getSelectedItem();
+            if (temp.equalsIgnoreCase("Human")) {
+                return true;
+            }
+        }
+        return false;
     }
 }
