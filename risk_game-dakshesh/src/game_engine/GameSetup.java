@@ -12,7 +12,7 @@ import models.GameBoard;
 import models.Player;
 import models.GameMap;
 import resources.Constants.RISKCARD;
-import services.RandomGenerator;
+import RandomServices.RandomGenerator;
 
 /**
  * This class Sets Up the game
@@ -132,9 +132,9 @@ public class GameSetup {
 
         for (int i = 0; i < player.length; i++) {
             HashMap<RISKCARD, Integer> cardsInfo = new HashMap<>();
-            cardsInfo.put(RISKCARD.ARTILLERY, 2);
-            cardsInfo.put(RISKCARD.CAVALRY, 2);
-            cardsInfo.put(RISKCARD.INFANTRY, 2);
+            cardsInfo.put(RISKCARD.ARTILLERY, 0);
+            cardsInfo.put(RISKCARD.CAVALRY, 0);
+            cardsInfo.put(RISKCARD.INFANTRY, 0);
 
             player[i].setCardsInfoInitial(cardsInfo);
 

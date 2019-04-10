@@ -11,14 +11,24 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 /**
- *
+ * Save Game saves the game
  * @author daksh
  */
 public class SaveGame {
 
+    /**
+     * {@link game_engine.Game.GameObjectsWrapper}
+     */
     GameObjectsWrapper gow;
+    /**
+     * Location of the file
+     */
     String location;
 
+    /**
+     * Parameterized constructor of SaveGame
+     * @param gow {@link #gow}
+     */
     public SaveGame(GameObjectsWrapper gow) {
         File currentDirectory = new File(new File(".").getAbsolutePath());
         String projectDirectory = currentDirectory.getAbsolutePath();
@@ -26,6 +36,14 @@ public class SaveGame {
         this.gow = gow;
     }
 
+    /**
+     * Saves the Game
+     * @param fileName Name of the file to be saved
+     * @return 1 if successfully saved 
+     *  2 if exception occured
+     * saves the file as the fileName with .game extension
+     * @throws IOException 
+     */
     public int saveGame(String fileName) throws IOException {
 
         location = location + "//" + fileName + ".game";
@@ -40,17 +58,18 @@ public class SaveGame {
             objectOut.close();
             System.out.println("The Object  was succesfully written to a file");
 
+            return 1; 
         } catch (Exception ex) {
             ex.printStackTrace();
-        } finally {
-            if (fileOut != null) {
-                fileOut.close();
-            }
-            if (objectOut != null) {
-                objectOut.close();
-            }
+            return 2;
+//        } finally {
+//            if (fileOut != null) {
+//                fileOut.close();
+//            }
+//            if (objectOut != null) {
+//                objectOut.close();
+//            }
         }
 
-        return 1;
     }
 }

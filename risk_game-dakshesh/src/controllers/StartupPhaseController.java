@@ -15,7 +15,7 @@ import models.GameBoard;
 import models.Player;
 import game_engine.GameDriver;
 import view.StartupPhaseView;
-import services.RandomGenerator;
+import RandomServices.RandomGenerator;
 import view.StartupPhaseView;
 import resources.Constants;
 
@@ -111,7 +111,8 @@ public class StartupPhaseController {
         assignedCountries = assignCountries(gameBoard, player);
         PhaseUpdateService.setCurrentPhase(gameBoard, Constants.STARTUP_PHASE);
         if (gameDriver.getGameMode() == 1) {
-            startupPhaseView.showView(currentPlayer);
+//            startupPhaseView.showView(currentPlayer);
+            autoAsign();
         } else if (gameDriver.getGameMode() == 2) {
             autoAsign();
         } else {
@@ -120,6 +121,9 @@ public class StartupPhaseController {
         return 0;
     }
 
+    /**
+     * It will assign countries to Player Randomly
+     */
     public void autoAsign() {
         while (totalTurns > 0) {
             List<String> ls = this.getList(currentPlayer);

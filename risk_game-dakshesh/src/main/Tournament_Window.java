@@ -21,7 +21,7 @@ import map.mapprocessor.MapValidator;
 import models.GameMap;
 
 /**
- *
+ * Tournament window of the Game
  * @author daksh
  */
 public class Tournament_Window extends javax.swing.JFrame {
@@ -452,6 +452,7 @@ public class Tournament_Window extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Tournament_Window.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -523,6 +524,10 @@ public class Tournament_Window extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Checks whether the map file is empty or not
+     * @return true if valid and false if invalid
+     */
     private boolean isMapFilesEmpty() {
         int nubmerOfMaps = (Integer) numberOfMapsSpinner.getValue();
         for (int i = 0; i < nubmerOfMaps; i++) {
@@ -534,6 +539,11 @@ public class Tournament_Window extends javax.swing.JFrame {
         return false;
     }
 
+    /**
+     * Checks the map path
+     * @param mapPath path of map file
+     * @return true if valid and false if invalid
+     */
     boolean checkMapPath(String mapPath) {
         if (mapPath.length() == 0) {
             JOptionPane.showMessageDialog(null, "Please Select Map");

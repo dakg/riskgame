@@ -9,34 +9,71 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import models.GameBoard;
 import models.Player;
-import services.RandomGenerator;
-import static services.RandomGenerator.randomNumberGenerator;
+import RandomServices.RandomGenerator;
+import static RandomServices.RandomGenerator.randomNumberGenerator;
 
 /**
- *
- * @author daksh
+ * Random Player strategy class
+ * @author shivam
  */
 public class Random implements Strategy,Serializable {
 
+    /**
+     * Default constructor of Random class
+     */
     public Random() {
 
     }
+    
+    /**
+     * Gets the name of strategy
+     * @return Random
+     */
+     public String getName() {
+        return "Random";
+    }
 
+
+    /**
+     * InitReinforce is the method for reinforcement 
+     * @param gameBoard Object of GameBoard {@link models.GameBoard}
+     * @param player Object of current player {@link models.Player}
+     */
     public void initReinforce(GameBoard gameBoard, Player player) {
     }
 
+     /**
+     * InitAttack is the method for Attack
+     * @param gameBoard Object of GameBoard {@link models.GameBoard}
+     * @param player Object of current player {@link models.Player}
+     */
     public void initAttack(GameBoard gameBoard, Player player) {
     }
 
+    /**
+     * InitFortify is the method for Fortification
+     * @param gameBoard Object of GameBoard {@link models.GameBoard}
+     * @param player Object of current player {@link models.Player}
+     */
     public void initFortify(GameBoard gameBoard, Player player) {
     }
 
+    /**
+     * Gets the country of the player for reinforcement
+     * @param player Object of current player {@link models.Player}
+     * @return country
+     */
     @Override
     public String getReinforcementCountry(Player player) {
         String countryName = player.getNameOfCountries().get(RandomGenerator.randomNumberGenerator(0, player.getNumberOfCountries() - 1));
         return countryName;
     }
 
+    /**
+     * Gets the number of army to move while reinforcing
+     * @param player Object of current player {@link models.Player}
+     * @return Number of army
+     */
     @Override
     public int getReinforcementMoveNumber(Player player) {
         int moveNumber = RandomGenerator.randomNumberGenerator(1, player.getReinforcementArmy());
@@ -160,23 +197,38 @@ public class Random implements Strategy,Serializable {
      *
      */
     @Override
-
+    
     public int getArmyToMove(int lowerBound, int upperBound) {
         int army = RandomGenerator.randomNumberGenerator(lowerBound, upperBound);
         return army;
     }
 
+    /**
+     * Gets the choice for fortification 
+     * @return 1: fortify , 2: exit
+     */
     public int getFortifyChoice() {
         int fortifyChoice = RandomGenerator.randomNumberGenerator(1, 2);
         return fortifyChoice;
     }
 
+    /**
+     * Gets the source country for fortification
+     * @param player Object of current player {@link models.Player}
+     * @return source country
+     */
     public String getFortifySourceCountry(Player player) {
         String countryName = player.getNameOfCountries().get(randomNumberGenerator(0, player.getNumberOfCountries() - 1));
         return countryName;
 
     }
 
+    /**
+     * Gets the destination for fortification
+     * @param player Object of current player {@link models.Player}
+     * @param sourceCountry source country
+     * @return destination country
+     */
     public String getFortifyDestiationCountry(Player player, String sourceCountry) {
         ArrayList<String> destinationCountryList = new ArrayList(player.getNameOfCountries());
         destinationCountryList.remove(sourceCountry);
@@ -185,6 +237,12 @@ public class Random implements Strategy,Serializable {
 
     }
 
+    /**
+     * Gets the number of army to be moved 
+     * @param player Object of current player {@link models.Player}
+     * @param sourceCountry source country
+     * @return Number of army
+     */
     public int getFortifyMoveNumber(Player player, String sourceCountry) {
         int moveNumber = RandomGenerator.randomNumberGenerator(1, player.getCountryArmyInfo().get(sourceCountry) - 1);
         return moveNumber;

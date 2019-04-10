@@ -6,7 +6,7 @@
 package controllers.rules;
 
 /**
- *
+ * Interface contains rules of fortification phase
  * @author daksh
  */
 public interface FortificationRulesInterface {

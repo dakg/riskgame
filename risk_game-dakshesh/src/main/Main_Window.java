@@ -19,7 +19,7 @@ import map.mapprocessor.MapValidator;
 import models.GameMap;
 
 /**
- *
+ * Main window of the Game
  * @author daksh
  */
 public class Main_Window extends javax.swing.JFrame {
@@ -204,6 +204,7 @@ public class Main_Window extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Main_Window.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -234,7 +235,8 @@ public class Main_Window extends javax.swing.JFrame {
                     GameMap m = MapParser.parseMap(mapPath);
                     reply = MapValidator.verifyMap(m);
                 } catch (InvalidMapException ex) {
-                    Logger.getLogger(New_Game_Window.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println(ex.getMessage());
+//                    Logger.getLogger(New_Game_Window.class.getName()).log(Level.SEVERE, null, ex);
                     reply = false;
                 }
 

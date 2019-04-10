@@ -5,6 +5,8 @@
  */
 package Strategies;
 
+import Strategies.Strategy;
+import Strategies.Strategy;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.Comparator;
@@ -18,28 +20,59 @@ import java.util.Set;
 import static java.util.stream.Collectors.toMap;
 import models.GameBoard;
 import models.Player;
-import services.RandomGenerator;
-import static services.RandomGenerator.randomNumberGenerator;
+import RandomServices.RandomGenerator;
+import static RandomServices.RandomGenerator.randomNumberGenerator;
 
 /**
- *
- * @author daksh
+ * Benevolent Player strategy class
+ * @author shivam
  */
-public class Benevolent implements Strategy,Serializable {
+public class Benevolent implements Strategy ,Serializable{
 
+    /**
+     * Default constructor of Benevolent class
+     */
     public Benevolent() {
 
     }
 
+    /**
+     * Gets the name of the strategy
+     * @return Benevolent
+     */
+     public String getName() {
+        return "Benevolent";
+    }
+
+    /**
+     * InitReinforce is the method for reinforcement 
+     * @param gameBoard Object of GameBoard {@link models.GameBoard}
+     * @param player Object of current player {@link models.Player}
+     */
     public void initReinforce(GameBoard gameBoard, Player player) {
     }
 
+    /**
+     * InitAttack is the method for Attack
+     * @param gameBoard Object of GameBoard {@link models.GameBoard}
+     * @param player Object of current player {@link models.Player}
+     */
     public void initAttack(GameBoard gameBoard, Player player) {
     }
 
+    /**
+     * InitFortify is the method for Fortification
+     * @param gameBoard Object of GameBoard {@link models.GameBoard}
+     * @param player Object of current player {@link models.Player}
+     */
     public void initFortify(GameBoard gameBoard, Player player) {
     }
 
+    /**
+     * Gets the country of the player for reinforcement
+     * @param player Object of current player {@link models.Player}
+     * @return country
+     */
     @Override
     public String getReinforcementCountry(Player player) {
         HashMap<String, Integer> countryArmyInfo = player.getCountryArmyInfo();
@@ -49,6 +82,11 @@ public class Benevolent implements Strategy,Serializable {
         return key;
     }
 
+    /**
+     * Gets the number of army to move while reinforcing
+     * @param player Object of current player {@link models.Player}
+     * @return Number of army
+     */
     @Override
     public int getReinforcementMoveNumber(Player player) {
         return 1; // It will always reinforce country 1 by 1
@@ -179,16 +217,31 @@ public class Benevolent implements Strategy,Serializable {
      */
     @Override
 
+     /**
+     * Gets the number of army to be moved from source to destination country 
+     * @param lowerBound Number of dice rolls rolled by the attacker
+     * @param upperBound Maximum number of dice rolls that can be rolled
+     * @return  Number of army
+     */
     public int getArmyToMove(int lowerBound, int upperBound) {
         return 1;
     }
 
+     /**
+     * Gets the choice for fortification 
+     * @return 1: fortify , 2: exit
+     */
     @Override
     public int getFortifyChoice() {
         int fortifyChoice = 1;
         return fortifyChoice;
     }
 
+    /**
+     * Gets the source country for fortification
+     * @param player Object of current player {@link models.Player}
+     * @return source country
+     */
     @Override
     public String getFortifySourceCountry(Player player) {
         HashMap<String, Integer> countryArmyInfo = player.getCountryArmyInfo();
@@ -220,6 +273,12 @@ public class Benevolent implements Strategy,Serializable {
 
     }
 
+    /**
+     * Gets the destination for fortification
+     * @param player Object of current player {@link models.Player}
+     * @param sourceCountry source country
+     * @return destination country
+     */
     @Override
     public String getFortifyDestiationCountry(Player player, String sourceCountry) {
         HashMap<String, Integer> countryArmyInfo = player.getCountryArmyInfo();
@@ -242,9 +301,15 @@ public class Benevolent implements Strategy,Serializable {
 
     }
 
+    /**
+     * Gets the number of army to be moved 
+     * @param player Object of current player {@link models.Player}
+     * @param sourceCountry source country
+     * @return Number of army
+     */
     @Override
     public int getFortifyMoveNumber(Player player, String sourceCountry) {
-        int armyNumber = player.getCountryArmyInfo().get(sourceCountry) - 1;
+       int armyNumber = player.getCountryArmyInfo().get(sourceCountry) - 1;
         int moveNumber = armyNumber > 2 ? (armyNumber - 1) / 2 : 1;
         return moveNumber;
     }

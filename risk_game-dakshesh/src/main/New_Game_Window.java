@@ -438,6 +438,10 @@ public class New_Game_Window extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         new New_Game_Window().setVisible(true);
 

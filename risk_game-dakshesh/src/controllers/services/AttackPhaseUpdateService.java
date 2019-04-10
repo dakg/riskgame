@@ -14,7 +14,6 @@ import game_engine.GameSetup;
 
 /**
  * This class handles the Update Service of Attack Phase
- *
  * @author daksh
  */
 public class AttackPhaseUpdateService {
@@ -23,7 +22,6 @@ public class AttackPhaseUpdateService {
 
     /**
      * Decreases the number of army from the country
-     *
      * @param gameBoard object of the GameBoard {@link models.GameBoard}
      * @param countryName name of the country whose army is to be decremented
      * @param army number of army in the country
@@ -54,7 +52,6 @@ public class AttackPhaseUpdateService {
 
     /**
      * Moves army from source country to destination country
-     *
      * @param gameBoard Object of the GameBoard {@link models.GameBoard}
      * @param sourceCountry attacking country
      * @param destinationCountry defending country
@@ -73,7 +70,7 @@ public class AttackPhaseUpdateService {
         sourceCountryArmyInfo.put(sourceCountry, newArmy);
 
         sourceCountryArmyInfo.put(destinationCountry, army);
-        System.out.println("Player 2 : " + destinationOwner);
+
         HashMap<String, Integer> destinationCountryArmyInfo = player2.getCountryArmyInfo();
         destinationCountryArmyInfo.remove(destinationCountry);
 
@@ -93,13 +90,14 @@ public class AttackPhaseUpdateService {
             attackerPlayerCards.put(RISKCARD.ARTILLERY, attackerArtilleryCard + defenderArtilleryCard);
             attackerPlayerCards.put(RISKCARD.CAVALRY, attackerCavalryCard + defenderCavalryCard);
             attackerPlayerCards.put(RISKCARD.INFANTRY, attackerInfantryCard + defenderInfantryCard);
-
+            
             defenderPlayerCards.put(RISKCARD.ARTILLERY, 0);
             defenderPlayerCards.put(RISKCARD.CAVALRY, 0);
             defenderPlayerCards.put(RISKCARD.INFANTRY, 0);
-
+            
             player1.setCardsInfo(attackerPlayerCards);
             player2.setCardsInfo(defenderPlayerCards);
+            
 
         }
 
@@ -115,9 +113,7 @@ public class AttackPhaseUpdateService {
     }
 
     /**
-     * Risk Card is taken from top of the pile and given to the player who
-     * conquered atleast one territory
-     *
+     * Risk Card is taken from top of the pile and given to the player who conquered atleast one territory
      * @param gameBoard Object of the GameBoard {@link models.GameBoard}
      * @param player Object of the current player{@link models.Player}
      */
@@ -144,7 +140,6 @@ public class AttackPhaseUpdateService {
 
     /**
      * Updates the actions performed in the Attack Phase in the GameBoard
-     *
      * @param gameBoard Object of the GameBoard {@link models.GameBoard}
      * @param player Object of the current player {@link models.Player}
      * @param action Action performed by the player

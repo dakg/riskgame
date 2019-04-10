@@ -13,19 +13,34 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- *
+ * Loads the Saved Game
  * @author daksh
  */
 public class LoadGame {
 
+    /**
+     * {@link game_engine.Game.GameObjectsWrapper}
+     */
     GameObjectsWrapper gow;
+    /**
+     * Location of the file
+     */
     String location;
 
+    /**
+     * Parameterized constructor of Load Game
+     * @param filePath Path of the saved File
+     */
     public LoadGame(String filePath) {
         gow = null;
         location = filePath;
     }
 
+    /**
+     * Loads the Game from the saved state
+     * @return {@link game_engine.Game.LoadGame}
+     * @throws IOException 
+     */
     public GameObjectsWrapper loadGame() throws IOException {
 
         FileInputStream fileIn = null;

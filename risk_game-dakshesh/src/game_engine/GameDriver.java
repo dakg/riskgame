@@ -35,6 +35,9 @@ import view.StartupPhaseView;
  */
 public class GameDriver {
 
+    /**
+     * Log of the Game
+     */
     private static final Logger LOG = Logger.getLogger(GameDriver.class.getName());
 
     /**
@@ -50,13 +53,28 @@ public class GameDriver {
      */
     Player player[];
 
+    /**
+     * mode of the game
+     */
     int gameMode = 1;
 
+    /**
+     * draw turn in the game
+     */
     int drawTurn = -1;
 
+    /**
+     * current turn in the game
+     */
     int currentTurn = 0;
+    /**
+     * counter of the turn
+     */
     int turnCounter = 0;
 
+    /**
+     * Result of the game
+     */
     String gameResult = null;
 
     /**
@@ -68,12 +86,15 @@ public class GameDriver {
      */
     PhaseView phaseView;
 
+    /**
+     * Default constructor of the GameDriver
+     */
     public GameDriver() {
 
     }
 
     /**
-     * GameDriver is the parameterized constructor of GameDriver class
+     * parameterized constructor of GameDriver class
      *
      * @param map Object of the GameMap model {@link models.GameMap}
      * @param numberOfPlayers number of players in the game
@@ -101,6 +122,14 @@ public class GameDriver {
 
     }
 
+    /**
+     * Parameterized constructor of GameDriver
+     * @param map {@link models.GameMap}
+     * @param numberOfPlayers number of player in the game
+     * @param strategies strategy of the player
+     * @param mode mode of the game
+     * @param drawTurn draw turn in the game 
+     */
     public GameDriver(GameMap map, int numberOfPlayers, Strategy strategies[], int mode, int drawTurn) {
 
         this.gameMode = mode;
@@ -126,6 +155,12 @@ public class GameDriver {
 
     }
 
+    /**
+     * Parameterized constructor of GameDriver
+     * @param gameBoard {@link models.GameBoard}
+     * @param player {@link models.Player}
+     * @param currentTurn current turn in the game
+     */
     public GameDriver(GameBoard gameBoard, Player player[], int currentTurn) {
 
         this.gameBoard = gameBoard;
@@ -162,6 +197,8 @@ public class GameDriver {
     public void startGame() {
 
         try {
+//            initializeGame();
+//            runGame();
             java.awt.EventQueue.invokeLater(new Runnable() {
 
                 public void run() {
@@ -169,7 +206,6 @@ public class GameDriver {
                         initializeGame();
                         runGame();
                     } catch (Exception e) {
-                        //    System.out.println(e.printStackTrace());
                         e.printStackTrace();
                     }
                 }
@@ -180,6 +216,16 @@ public class GameDriver {
 
     }
 
+    /**
+     * Starts the loaded game
+     * @param gameBoard {@link models.GameBoard}
+     * @param player {@link models.Player}
+     * @param currentTurn current turn in the game
+     * @param gameMode mode of the game
+     * @param drawTurn draw turn in the game
+     * @param turnCounter counter of the turn 
+     * @param gameResult result of the game
+     */
     public void startLoadedGame(GameBoard gameBoard, Player player[], int currentTurn, int gameMode, int drawTurn, int turnCounter, String gameResult) {
         this.gameBoard = gameBoard;
         this.player = player;
@@ -246,7 +292,7 @@ public class GameDriver {
                         turnCounter++;
                         if (drawTurn != -1) {
                             if (turnCounter >= drawTurn) {
-                                gameResult = "Draw";
+                                gameResult = "DRAW";
                                 System.out.println("----------------Game Draw------------------");
                                 break;
                             }
@@ -260,12 +306,12 @@ public class GameDriver {
                     System.out.println("-------------------GAME ENDED------------------------");
                     System.out.println("");
                     System.out.println("CONGRATULATIONS : " + winner + "!" + " " + "You won!");
-                    System.out.println("Total Turns : " + currentTurn);
+                    System.out.println("Total Turns : " + turnCounter);
                     break;
                 }
                 currentTurn++;
 
-                if (gameMode == 1 && flag) {
+                if (gameMode == 1 && flag && player[i].getStrategy().getName().equalsIgnoreCase("Human")) {
                     //Save logic comes here
                     System.out.println("Do you want to Save Game : y/n ");
                     Scanner sc = new Scanner(System.in);
@@ -328,21 +374,53 @@ public class GameDriver {
         }
     }
 
+    /**
+     * Gets the mode of the game
+     * @return {@link #gameMode}
+     */
     public int getGameMode() {
         return gameMode;
     }
 
+    /**
+     * Sets the Game mode 
+     * @param gameMode {@link #gameMode}
+     */
     public void setGameMode(int gameMode) {
         this.gameMode = gameMode;
     }
 
+    /**
+     * Gets the result of the game
+     * @return {@link #gameResult}
+     */
     public String getGameResult() {
         return gameResult;
     }
 
+    /**
+     * Gets the result of the game strategy type in game
+     * @return strategy
+     */
+    public String getGameResultStrategyType() {
+        if (gameResult != null) {
+            if (!gameResult.equalsIgnoreCase("DRAW")) {
+                Player player = gameBoard.getPlayerObjectFromPlayerName(gameResult);
+                String strategy = player.getStrategy().getName();
+                return strategy;
+            }
+            return "DRAW";
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Sets the game result
+     * @param gameResult {@link #gameResult}
+     */
     public void setGameResult(String gameResult) {
         this.gameResult = gameResult;
     }
-    
 
 }

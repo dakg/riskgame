@@ -13,7 +13,7 @@ import java.util.Observer;
 import java.util.Scanner;
 import models.Player;
 import resources.Constants;
-import services.RandomGenerator;
+import RandomServices.RandomGenerator;
 
 /**
  * This class contains the View for the Card Exchange

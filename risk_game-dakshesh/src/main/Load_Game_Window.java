@@ -15,11 +15,14 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileSystemView;
 
 /**
- *
+ * Load Game Window
  * @author daksh
  */
 public class Load_Game_Window extends javax.swing.JFrame {
 
+    /**
+     * Path of the .game file
+     */
     String gamePath;
 
     /**
@@ -164,6 +167,7 @@ public class Load_Game_Window extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Load_Game_Window.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

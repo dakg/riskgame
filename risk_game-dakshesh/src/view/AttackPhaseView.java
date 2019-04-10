@@ -9,7 +9,7 @@ import Strategies.StrategyContext;
 import controllers.AttackPhaseController;
 import java.util.ArrayList;
 import java.util.Scanner;
-import services.RandomGenerator;
+import RandomServices.RandomGenerator;
 
 /**
  * This class contains the View of the Attack Phase

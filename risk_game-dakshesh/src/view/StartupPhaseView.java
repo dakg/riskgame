@@ -100,22 +100,9 @@ public class StartupPhaseView extends javax.swing.JFrame {
      * @param currentPlayer ID of the current player {@link #currentPlayer}
      */
     public void showView(int currentPlayer) {
-        
         this.currentPlayer = currentPlayer;
         repaint(currentPlayer);
         this.setVisible(true);
-        
-//        try {
-//            java.awt.EventQueue.invokeLater(new Runnable() {
-//
-//                public void run() {
-//                    this.setVisible(true);
-//                }
-//            });
-//        } catch (ArrayIndexOutOfBoundsException e) {
-//            System.out.println("Caught");
-//        }
-        
     }
 
     /**

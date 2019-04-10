@@ -6,7 +6,7 @@
 package controllers.rules;
 
 /**
- *
+ * Interface contains rules of Reinforcement Phase
  * @author daksh
  */
 public interface ReinforcementRulesInterface {

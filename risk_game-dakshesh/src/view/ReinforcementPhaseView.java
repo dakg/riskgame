@@ -11,7 +11,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
-import services.RandomGenerator;
+import RandomServices.RandomGenerator;
 
 /**
  * This class contains the View of the Reinforcement Phase

@@ -20,6 +20,7 @@ import view.ReinforcementPhaseView;
 
 /**
  * This class is the controller of Reinforcement Phase
+ *
  * @author daksh
  */
 public class ReinforcementPhaseController implements ReinforcementRulesInterface {
@@ -64,11 +65,13 @@ public class ReinforcementPhaseController implements ReinforcementRulesInterface
         player.addObserver(cardExchangeView);
 
         reinforcementPhaseView.showView(this);
-        reinforcement = reinforcement + calculateReinforcementFromCountry();
-        updateActions("Reinforcement due to country : " + reinforcement);
+        int reinforcement1 = calculateReinforcementFromCountry();
+        reinforcement = reinforcement + reinforcement1;
+        updateActions("Reinforcement due to country : " + reinforcement1);
 
-        reinforcement = reinforcement + calculateReinforcementFromContinents();
-        updateActions("Reinforcement due to continent : " + reinforcement);
+        int reinforcement2 = calculateReinforcementFromContinents();
+        reinforcement = reinforcement + reinforcement2;
+        updateActions("Reinforcement due to continent : " + reinforcement2);
         cardExchangeView.showView(this);
 
         ReinforcementPhaseUpdateService.updateReinforcementArmy(player, reinforcement);
@@ -146,7 +149,14 @@ public class ReinforcementPhaseController implements ReinforcementRulesInterface
         int army = 0;
 
         System.out.println(player.getCardsInfo());
-        int choice[] = cardExchangeView.getCardChoice();
+        int choice[];
+        while (true) {
+            choice = cardExchangeView.getCardChoice();
+            if (isValidChoice(choice) && checkTradeInPossible(choice)) {
+                break;
+            }
+        }
+        
         ReinforcementPhaseUpdateService.updateActions(gameBoard, player, "Cards choice " + " Artillery : " + choice[0] + "Infantry : " + choice[1] + "Cavalry : " + choice[2]);
         if (isValidChoice(choice)) {
             if (checkTradeInPossible(choice)) {
@@ -426,6 +436,7 @@ public class ReinforcementPhaseController implements ReinforcementRulesInterface
      * Reinforcement Phase.
      * <br>Along with it takes the player moves as input and updates the
      * Reinforcement Services accordingly
+     *
      * @param countryName name of the country
      * @param moveNumber number of army to move
      */
@@ -475,8 +486,10 @@ public class ReinforcementPhaseController implements ReinforcementRulesInterface
 
     /**
      * Checks whether army to move is less or equal to reinforcement value
+     *
      * @param moveNumber army to move
-     * @return true if moveNumber is less than equal to reinforcement value otherwise false
+     * @return true if moveNumber is less than equal to reinforcement value
+     * otherwise false
      */
     @Override
     public boolean isValidMoveNumber(int moveNumber) {
@@ -494,6 +507,7 @@ public class ReinforcementPhaseController implements ReinforcementRulesInterface
 
     /**
      * Sets the current player
+     *
      * @param player Object of current player {@link models.Player}
      */
     public void setPlayer(Player player) {
@@ -502,6 +516,7 @@ public class ReinforcementPhaseController implements ReinforcementRulesInterface
 
     /**
      * Gets the GameBoard of the game
+     *
      * @return Object of the GameBoard {@link models.GameBoard}
      */
     public GameBoard getGameBoard() {
@@ -510,6 +525,7 @@ public class ReinforcementPhaseController implements ReinforcementRulesInterface
 
     /**
      * Sets the GameBoard of the game
+     *
      * @param gameBoard Object of the GameBoard {@link models.GameBoard}
      */
     public void setGameBoard(GameBoard gameBoard) {
@@ -518,6 +534,7 @@ public class ReinforcementPhaseController implements ReinforcementRulesInterface
 
     /**
      * Gets the Reinforcements
+     *
      * @return reinforcement The Reinforcements
      */
     public int getReinforcement() {
@@ -526,6 +543,7 @@ public class ReinforcementPhaseController implements ReinforcementRulesInterface
 
     /**
      * Sets the Reinforcements
+     *
      * @param reinforcement The reinforcement
      */
     public void setReinforcement(int reinforcement) {

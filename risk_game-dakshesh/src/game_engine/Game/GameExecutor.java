@@ -8,20 +8,30 @@ package game_engine.Game;
 import game_engine.GameDriver;
 
 /**
- *
+ * For Future Use.
+ * This class executes Games for the tournament mode
  * @author daksh
  */
 public class GameExecutor implements Runnable {
 
+    /**
+     * {@link game_engine.GameDriver}
+     */
     public GameDriver gameDriver;
 
+    /**
+     * Parameterized constructor of GameExecutor
+     * @param gameDriver {@link game_engine.GameDriver}
+     */
     public GameExecutor(GameDriver gameDriver) {
         this.gameDriver = gameDriver;
     }
 
+    /**
+     * Run method of Executor
+     */
     @Override
     public void run() {
-        System.out.println("-----------------------------------------------------------------------------------" + gameDriver);
         gameDriver.startGame();
     }
 }

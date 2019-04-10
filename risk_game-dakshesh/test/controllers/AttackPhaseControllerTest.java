@@ -10,7 +10,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import main.New_Game_Window;
 import map.mapprocessor.InvalidMapException;
 import map.mapprocessor.MapParser;
 import models.GameBoard;

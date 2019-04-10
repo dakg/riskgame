@@ -19,27 +19,59 @@ import java.util.Set;
 import static java.util.stream.Collectors.toMap;
 import models.GameBoard;
 import models.Player;
-import services.RandomGenerator;
+import RandomServices.RandomGenerator;
 
 /**
- *
- * @author daksh
+ * Aggresive Player strategy class
+ * @author shivam
  */
 public class Aggresive implements Strategy,Serializable {
 
+    /**
+     * Default constructor of Aggresive class
+     */
     public Aggresive() {
 
     }
+    
+    /**
+     * Gets the name of the strategy 
+     * @return Aggressive
+     */
+     public String getName() {
+        return "Aggresive";
+    }
 
+
+     /**
+     * InitReinforce is the method for reinforcement 
+     * @param gameBoard Object of GameBoard {@link models.GameBoard}
+     * @param player Object of current player {@link models.Player}
+     */
     public void initReinforce(GameBoard gameBoard, Player player) {
     }
 
+    /**
+     * InitAttack is the method for Attack
+     * @param gameBoard Object of GameBoard {@link models.GameBoard}
+     * @param player Object of current player {@link models.Player}
+     */
     public void initAttack(GameBoard gameBoard, Player player) {
     }
 
+    /**
+     * InitFortify is the method for Fortification
+     * @param gameBoard Object of GameBoard {@link models.GameBoard}
+     * @param player Object of current player {@link models.Player}
+     */
     public void initFortify(GameBoard gameBoard, Player player) {
     }
 
+    /**
+     * Gets the country of the player for reinforcement
+     * @param player Object of current player {@link models.Player}
+     * @return country
+     */
     @Override
     public String getReinforcementCountry(Player player) {
         HashMap<String, Integer> countryArmyInfo = player.getCountryArmyInfo();
@@ -49,6 +81,11 @@ public class Aggresive implements Strategy,Serializable {
         return key;
     }
 
+    /**
+     * Gets the number of army to move while reinforcing
+     * @param player Object of current player {@link models.Player}
+     * @return Number of army
+     */
     @Override
     public int getReinforcementMoveNumber(Player player) {
         int maxReinforcementArmy = player.getReinforcementArmy();
@@ -121,8 +158,9 @@ public class Aggresive implements Strategy,Serializable {
      *
      */
     @Override
+
     public String getAttackingCountry(GameBoard gameBoard, Player player) {
-        HashMap<String, Integer> countryArmyInfo = player.getCountryArmyInfo();
+       HashMap<String, Integer> countryArmyInfo = player.getCountryArmyInfo();
         HashMap<String, Integer> countryArmyInfoCopy = new HashMap();
         countryArmyInfoCopy.putAll(countryArmyInfo);
         String sourceCountry = null;
@@ -192,12 +230,21 @@ public class Aggresive implements Strategy,Serializable {
         return 1;
     }
 
+    /**
+     * Gets the choice for fortification 
+     * @return 1: fortify , 2: exit
+     */
     @Override
     public int getFortifyChoice() {
         int fortifyChoice = 1;
         return fortifyChoice;
     }
 
+    /**
+     * Gets the source country for fortification
+     * @param player Object of current player {@link models.Player}
+     * @return source country
+     */
     @Override
     public String getFortifySourceCountry(Player player) {
         HashMap<String, Integer> countryArmyInfo = player.getCountryArmyInfo();
@@ -229,6 +276,12 @@ public class Aggresive implements Strategy,Serializable {
 
     }
 
+    /**
+     * Gets the destination for fortification
+     * @param player Object of current player {@link models.Player}
+     * @param sourceCountry source country
+     * @return destination country
+     */
     @Override
     public String getFortifyDestiationCountry(Player player, String sourceCountry) {
         HashMap<String, Integer> countryArmyInfo = player.getCountryArmyInfo();
@@ -251,9 +304,15 @@ public class Aggresive implements Strategy,Serializable {
 
     }
 
+    /**
+     * Gets the number of army to be moved 
+     * @param player Object of current player {@link models.Player}
+     * @param sourceCountry source country
+     * @return Number of army
+     */
     @Override
     public int getFortifyMoveNumber(Player player, String sourceCountry) {
-        int armyNumber = player.getCountryArmyInfo().get(sourceCountry) - 1;
+         int armyNumber = player.getCountryArmyInfo().get(sourceCountry) - 1;
         int moveNumber = armyNumber > 2 ? (armyNumber - 1) / 2 : 1;
         return moveNumber;
     }

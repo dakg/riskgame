@@ -14,7 +14,7 @@ import java.util.Observable;
  * Phase object holds the Phase Details such as : current Phase name , current Phase playing in the phase,etc
  * @author daksh
  */
-public class Phase extends Observable implements Serializable{
+public class Phase extends Observable implements Serializable {
 
     /**
      * Name of the phase

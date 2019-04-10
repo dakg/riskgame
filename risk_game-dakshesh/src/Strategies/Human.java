@@ -10,27 +10,58 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import models.GameBoard;
 import models.Player;
-import services.RandomGenerator;
-import static services.RandomGenerator.randomNumberGenerator;
+import RandomServices.RandomGenerator;
+import static RandomServices.RandomGenerator.randomNumberGenerator;
 
 /**
- *
- * @author daksh
+ * Human Player strategy class
+ * @author shivam
  */
-public class Human implements Strategy,Serializable {
+public class Human implements Strategy ,Serializable{
 
+    /**
+     * Default constructor of Human class
+     */
     public Human() {
     }
 
+    /**
+     * Gets the name of the strategy
+     * @return Human
+     */
+     public String getName() {
+        return "Human";
+    }
+
+    /**
+     * InitReinforce is the method for reinforcement 
+     * @param gameBoard Object of GameBoard {@link models.GameBoard}
+     * @param player Object of current player {@link models.Player}
+     */
     public void initReinforce(GameBoard gameBoard, Player player) {
     }
 
+    /**
+     * InitAttack is the method for Attack
+     * @param gameBoard Object of GameBoard {@link models.GameBoard}
+     * @param player Object of current player {@link models.Player}
+     */
     public void initAttack(GameBoard gameBoard, Player player) {
     }
 
+    /**
+     * InitFortify is the method for Fortification
+     * @param gameBoard Object of GameBoard {@link models.GameBoard}
+     * @param player Object of current player {@link models.Player}
+     */
     public void initFortify(GameBoard gameBoard, Player player) {
     }
 
+    /**
+     * Gets the country of the player for reinforcement
+     * @param player Object of current player {@link models.Player}
+     * @return country
+     */
     @Override
     public String getReinforcementCountry(Player player) {
         Scanner sc;
@@ -39,6 +70,11 @@ public class Human implements Strategy,Serializable {
         return countryName;
     }
 
+    /**
+     * Gets the number of army to move while reinforcing
+     * @param player Object of current player {@link models.Player}
+     * @return Number of army
+     */
     @Override
     public int getReinforcementMoveNumber(Player player) {
         Scanner sc;
@@ -177,16 +213,19 @@ public class Human implements Strategy,Serializable {
      *
      */
     @Override
-
     public int getArmyToMove(int lowerBound, int upperBound) {
         Scanner sc = new Scanner(System.in);
         int army = sc.nextInt();
         return army;
     }
 
+    /**
+     * Gets the choice for fortification 
+     * @return 1: fortify , 2: exit
+     */
     @Override
     public int getFortifyChoice() {
-        Scanner sc = new Scanner(System.in);
+          Scanner sc = new Scanner(System.in);
         int fortifyChoice;
         while (true) {
             try {
@@ -200,6 +239,11 @@ public class Human implements Strategy,Serializable {
         return fortifyChoice;
     }
 
+    /**
+     * Gets the source country for fortification
+     * @param player Object of current player {@link models.Player}
+     * @return source country
+     */
     @Override
     public String getFortifySourceCountry(Player player) {
         Scanner sc = new Scanner(System.in);
@@ -208,6 +252,12 @@ public class Human implements Strategy,Serializable {
 
     }
 
+    /**
+     * Gets the destination for fortification
+     * @param player Object of current player {@link models.Player}
+     * @param sourceCountry source country
+     * @return destination country
+     */
     @Override
     public String getFortifyDestiationCountry(Player player, String sourceCountry) {
         Scanner sc = new Scanner(System.in);
@@ -216,6 +266,12 @@ public class Human implements Strategy,Serializable {
 
     }
 
+    /**
+     * Gets the number of army to be moved 
+     * @param player Object of current player {@link models.Player}
+     * @param sourceCountry source country
+     * @return Number of army
+     */
     @Override
     public int getFortifyMoveNumber(Player player, String sourceCountry) {
         Scanner sc = new Scanner(System.in);
