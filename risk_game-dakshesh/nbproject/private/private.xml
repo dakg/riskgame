@@ -4,44 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/Strategies/Random.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/Strategies/Strategy.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/view/AttackPhaseView.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/view/FortificationPhaseView.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/services/RandomGenerator.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/view/ReinforcementPhaseView.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/Strategies/Cheating.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/Strategies/Human.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/Strategies/Benevolent.java</file>
             <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/Strategies/Aggresive.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/Strategies/DemoTest.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/controllers/AttackPhaseController.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/controllers/services/AttackPhaseUpdateService.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/controllers/services/FortificationPhaseUpdateService.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/Strategies/StrategyContext.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/view/CardExchangeView.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/view/StartupPhaseView.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/controllers/FortificationPhaseController.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/game_engine/GameDriver.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/main/Main_Window.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/main/New_Game_Window.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/main/Load_Game_Window.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/game_engine/Game/GameObjectsWrapper.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/main/Tournament_Window.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/game_engine/Game/GameExecutor.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/game_engine/TournamentDriver.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/main/TestClass.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/controllers/StartupPhaseController.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/controllers/ReinforcementPhaseController.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/models/Player.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/game_engine/GameSetup.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/models/GameBoard.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/game_engine/Game/SaveGame.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/map/mapprocessor/MapParser.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/view/GameBoardView.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/game_engine/TestClass.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/controllers/services/ReinforcementPhaseUpdateService.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/controllers/services/PhaseUpdateService.java</file>
-            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/game_engine/Game/LoadGame.java</file>
+            <file>file:/C:/Users/daksh/Documents/NetBeansProjects/risk_game_28my/risk_game-dakshesh/src/Strategies/Benevolent.java</file>
         </group>
     </open-files>
 </project-private>
